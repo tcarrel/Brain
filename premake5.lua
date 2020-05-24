@@ -10,8 +10,10 @@ workspace "Brain"
         "Release",
         "Distribution"
 	}
+	
+	startproject "Sandbox"
 
-outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 --  Include directories relative to the solution directory
 	IncludeDir = {}
@@ -19,14 +21,18 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 	IncludeDir["glad"] = "Brain/vendor/glad/include"
 	IncludeDir["imgui"] = "Brain/vendor/imgui"
 	
-	include "Brain/vendor/GLFW"
-	include "Brain/vendor/glad"
-	include "Brain/vendor/imgui"
+	group "Dependencies"
+		include "Brain/vendor/GLFW"
+		include "Brain/vendor/glad"
+		include "Brain/vendor/imgui"
+		
+	group ""
 
 project "Brain"
     location "Brain"
     kind "SharedLib"
     language "C++"
+	staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -61,7 +67,6 @@ project "Brain"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         defines
@@ -73,7 +78,7 @@ project "Brain"
 
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")  
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")  
 		}
 
     filter "configurations:Debug"
@@ -82,17 +87,17 @@ project "Brain"
 			"BR_DEBUG",
 			"BR_ENABLE_ASSERTS"
 		}
-		buildoptions "/MDd"
+		runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "BR_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
         optimize "On"
 
     filter "configurations:Distribution"
         defines "BR_DIST"
-		buildoptions "/MD"
+		runtime "Release"
         optimize "On"
 
 
@@ -134,20 +139,16 @@ project "Sandbox"
 		}
 
     filter "configurations:Debug"
-        defines
-		{
-			"BR_DEBUG",
-			"BR_ENABLE_ASSERTS"
-		}
-		buildoptions "/MDd"
+        defines "BR_DEBUG"
+		runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "BR_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
         optimize "On"
 
     filter "configurations:Distribution"
         defines "BR_DIST"
-		buildoptions "/MD"
+		runtime "Release"
         optimize "On"

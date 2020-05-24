@@ -23,6 +23,8 @@ namespace Brain
         unsigned width() const override;
         unsigned height() const override;
 
+        void* get_native_window( void ) const;
+
         // attribs
         void set_event_callback( const Event_Callback_Function& callback ) override;
         void set_vsync( bool enabled ) override;

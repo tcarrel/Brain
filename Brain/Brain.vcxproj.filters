@@ -10,8 +10,14 @@
     <Filter Include="Brain\Platform">
       <UniqueIdentifier>{A562BC42-9130-B048-7AC4-206F66318CAD}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Brain\Platform\OpenGL">
+      <UniqueIdentifier>{390085B3-A56C-40AE-6E60-D80BDA8B6216}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Brain\Platform\Windows">
       <UniqueIdentifier>{DFE1407C-CBDB-69CE-B448-00DFA0E1CF3A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Brain\imgui">
+      <UniqueIdentifier>{5B6DFEAC-C722-77A2-5017-7179BCCB6DA6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,6 +33,9 @@
     <ClInclude Include="src\Brain\Events\mouse_event.h">
       <Filter>Brain\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Brain\Platform\OpenGL\imgui_opengl_renderer.h">
+      <Filter>Brain\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Brain\Platform\Windows\windows_window.h">
       <Filter>Brain\Platform\Windows</Filter>
     </ClInclude>
@@ -35,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="src\Brain\entry_point.h">
       <Filter>Brain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brain\imgui\imgui.layer.h">
+      <Filter>Brain\imgui</Filter>
     </ClInclude>
     <ClInclude Include="src\Brain\layer.h">
       <Filter>Brain</Filter>
@@ -53,18 +65,26 @@
     </ClInclude>
     <ClInclude Include="src\br.pch.h" />
     <ClInclude Include="src\brain.h" />
-    <ClInclude Include="src\Brain\imgui\imgui.layer.h" />
-    <ClInclude Include="src\Brain\Platform\OpenGL\imgui_opengl_renderer.h" />
+    <ClInclude Include="src\Brain\input.h" />
+    <ClInclude Include="src\Brain\Platform\Windows\windows_input.h" />
+    <ClInclude Include="src\Brain\keycodes.h" />
+    <ClInclude Include="src\Brain\mouse_button_codes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Brain\Events\event.cpp">
       <Filter>Brain\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Brain\Platform\OpenGL\imgui_opengl_renderer.cpp">
+      <Filter>Brain\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Brain\Platform\Windows\windows_window.cpp">
       <Filter>Brain\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Brain\application.cpp">
       <Filter>Brain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Brain\imgui\imgui.layer.cpp">
+      <Filter>Brain\imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\Brain\layer.cpp">
       <Filter>Brain</Filter>
@@ -76,7 +96,6 @@
       <Filter>Brain</Filter>
     </ClCompile>
     <ClCompile Include="src\br.pch.cpp" />
-    <ClCompile Include="src\Brain\imgui\imgui.layer.cpp" />
-    <ClCompile Include="src\Brain\Platform\OpenGL\imgui_opengl_renderer.cpp" />
+    <ClCompile Include="src\Brain\Platform\Windows\windows_input.cpp" />
   </ItemGroup>
 </Project>

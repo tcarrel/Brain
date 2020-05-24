@@ -17,14 +17,21 @@ public:
 
     void on_update( void ) override
     {
-
+        if( Brain::Input::is_key_pressed( BR_KEY_TAB ) )
+        {
+            BR_TRACE( "Tab key is pressed!" );
+        }
     }
 
 
 
     void on_event( Brain::Event& e ) override
     {
-        BR_TRACE( "{0}", e.to_string() );
+        if( e.get_event_type() == Brain::Event_Type::KEY_PRESSED )
+        {
+            auto kpe{ reinterpret_cast<Brain::Key_Press_Event&>( e ) };
+            BR_TRACE( "{0}", (char)kpe.keycode );
+        }
     }
 };
 

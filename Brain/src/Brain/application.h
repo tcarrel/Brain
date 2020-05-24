@@ -29,7 +29,7 @@ namespace Brain
         Application();
         virtual ~Application();
 
-        int run( void );
+        void run( void );
 
         void on_event( Event& e );
 

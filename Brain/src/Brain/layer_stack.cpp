@@ -69,4 +69,16 @@ namespace Brain
     {
         return layers_.end();
     }
+
+
+
+    std::vector<Layer*>::reverse_iterator Layer_Stack::rbegin( void )
+    {
+        return layers_.rbegin();
+    }
+
+    std::vector<Layer*>::reverse_iterator Layer_Stack::rend( void )
+    {
+        return layers_.rend();
+    }
 }

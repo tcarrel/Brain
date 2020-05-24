@@ -73,6 +73,13 @@ namespace Brain
 
 
 
+    void* Windows_Window::get_native_window( void ) const
+    {
+        return window_;
+    }
+
+
+
     void Windows_Window::set_event_callback( const Event_Callback_Function& callback )
     {
         data_.event_callback = callback;

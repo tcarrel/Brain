@@ -27,6 +27,9 @@ namespace Brain
         std::vector<Layer*>::iterator begin( void );
         std::vector<Layer*>::iterator end( void );
 
+        std::vector<Layer*>::reverse_iterator rbegin( void );
+        std::vector<Layer*>::reverse_iterator rend( void );
+
     private:
 
         std::vector<Layer*> layers_;

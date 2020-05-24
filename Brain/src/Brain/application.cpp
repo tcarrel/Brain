@@ -2,7 +2,7 @@
 
 #include "application.h"
 
-
+#include "input.h"
 
 //Temp
 #include <glad/glad.h>
@@ -51,7 +51,7 @@ namespace Brain
 
 
 
-    int Application::run( void )
+    void Application::run( void )
     {
         Window_Resize_Event e( 1280, 720 );
 
@@ -64,13 +64,14 @@ namespace Brain
             {
                 layer->on_update();
             }
+
+            //auto [x, y] = Input::mouse_position();
+            //BR_CORE_TRACE( "{0}x{1}", x, y );
+
             window_->on_update();
 
             glClear(GL_COLOR_BUFFER_BIT);
         }
-
-
-        return 0;
     }
 
 
@@ -89,12 +90,18 @@ namespace Brain
 
         ED.dispatch<Window_Close_Event>( BIND_APP_EVENT_FN( on_window_close ) );
 
+        //for( auto it = layer_stack_.end(); it != layer_stack_.begin(); )
+        //{
+        //    ( *--it )->on_event( e );
+        //    if( e.handled )
+        //    {
+        //        break;
+        //    }
+        //}
 
-        BR_CORE_TRACE( "{0}", e );
-
-        for( auto it = layer_stack_.end(); it != layer_stack_.begin(); )
+        for( auto it = layer_stack_.rbegin(); it != layer_stack_.rend(); ++it )
         {
-            ( *--it )->on_event( e );
+            ( *it )->on_event( e );
             if( e.handled )
             {
                 break;

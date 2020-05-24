@@ -83,8 +83,7 @@
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -94,7 +93,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\Brain\Brain.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Brain\Brain.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Brain\Brain.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Brain\Brain.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Brain\Brain.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Brain\Brain.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Brain\Brain.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -109,8 +108,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -121,7 +119,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\Brain\Brain.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\Brain\Brain.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Brain\Brain.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Brain\Brain.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Brain\Brain.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Brain\Brain.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Brain\Brain.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'">
@@ -136,8 +134,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -148,7 +145,7 @@
       <ImportLibrary>..\bin\Distribution-windows-x86_64\Brain\Brain.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Distribution-windows-x86_64\Brain\Brain.dll\ (xcopy /Q /E /Y /I ..\bin\Distribution-windows-x86_64\Brain\Brain.dll ..\bin\Distribution-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Distribution-windows-x86_64\Brain\Brain.dll ..\bin\Distribution-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Distribution-windows-x86_64\Brain\Brain.dll\ (xcopy /Q /E /Y /I ..\bin\Distribution-windows-x86_64\Brain\Brain.dll "..\bin\Distribution-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Distribution-windows-x86_64\Brain\Brain.dll "..\bin\Distribution-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -156,11 +153,15 @@
     <ClInclude Include="src\Brain\Events\event.h" />
     <ClInclude Include="src\Brain\Events\key_event.h" />
     <ClInclude Include="src\Brain\Events\mouse_event.h" />
-    <ClInclude Include="src\Brain\imgui\imgui.layer.h" />
+    <ClInclude Include="src\Brain\input.h" />
+    <ClInclude Include="src\Brain\keycodes.h" />
+    <ClInclude Include="src\Brain\mouse_button_codes.h" />
     <ClInclude Include="src\Brain\Platform\OpenGL\imgui_opengl_renderer.h" />
+    <ClInclude Include="src\Brain\Platform\Windows\windows_input.h" />
     <ClInclude Include="src\Brain\Platform\Windows\windows_window.h" />
     <ClInclude Include="src\Brain\application.h" />
     <ClInclude Include="src\Brain\entry_point.h" />
+    <ClInclude Include="src\Brain\imgui\imgui.layer.h" />
     <ClInclude Include="src\Brain\layer.h" />
     <ClInclude Include="src\Brain\layer_stack.h" />
     <ClInclude Include="src\Brain\log.h" />
@@ -171,10 +172,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Brain\Events\event.cpp" />
-    <ClCompile Include="src\Brain\imgui\imgui.layer.cpp" />
     <ClCompile Include="src\Brain\Platform\OpenGL\imgui_opengl_renderer.cpp" />
+    <ClCompile Include="src\Brain\Platform\Windows\windows_input.cpp" />
     <ClCompile Include="src\Brain\Platform\Windows\windows_window.cpp" />
     <ClCompile Include="src\Brain\application.cpp" />
+    <ClCompile Include="src\Brain\imgui\imgui.layer.cpp" />
     <ClCompile Include="src\Brain\layer.cpp" />
     <ClCompile Include="src\Brain\layer_stack.cpp" />
     <ClCompile Include="src\Brain\log.cpp" />

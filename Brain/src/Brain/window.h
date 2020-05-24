@@ -45,6 +45,8 @@ namespace Brain
         virtual void set_vsync( bool enabled ) = 0;
         virtual bool is_vsync_enabled( void ) const = 0;
 
+        virtual void* get_native_window( void ) const = 0;
+
         static Window* create( const Window_Properties& props = Window_Properties() );
     };
 }
