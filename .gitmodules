@@ -1,0 +1,9 @@
+[submodule "Brain/vendor/spdlog"]
+	path = Brain/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Brain/vendor/GLFW"]
+	path = Brain/vendor/GLFW
+	url = https://github.com/tcarrel/glfw
+[submodule "Brain/vendor/imgui"]
+	path = Brain/vendor/imgui
+	url = https://github.com/tcarrel/imgui

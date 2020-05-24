@@ -1,36 +1,82 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Brain">
+      <UniqueIdentifier>{317FE90C-9D93-11BE-6615-B51DD2E80DEF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Brain\Events">
+      <UniqueIdentifier>{F50974F9-E16C-039E-8AF2-3B547634CF20}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Brain\Platform">
+      <UniqueIdentifier>{A562BC42-9130-B048-7AC4-206F66318CAD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Brain\Platform\Windows">
+      <UniqueIdentifier>{DFE1407C-CBDB-69CE-B448-00DFA0E1CF3A}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Brain\nucleus.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Brain\Events\app_event.h">
+      <Filter>Brain\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brain\Events\event.h">
+      <Filter>Brain\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brain\Events\key_event.h">
+      <Filter>Brain\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brain\Events\mouse_event.h">
+      <Filter>Brain\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brain\Platform\Windows\windows_window.h">
+      <Filter>Brain\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Brain\application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\brain.h">
-      <Filter>Header Files</Filter>
+      <Filter>Brain</Filter>
     </ClInclude>
     <ClInclude Include="src\Brain\entry_point.h">
-      <Filter>Header Files</Filter>
+      <Filter>Brain</Filter>
     </ClInclude>
+    <ClInclude Include="src\Brain\layer.h">
+      <Filter>Brain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brain\layer_stack.h">
+      <Filter>Brain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brain\log.h">
+      <Filter>Brain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brain\nucleus.h">
+      <Filter>Brain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brain\window.h">
+      <Filter>Brain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\br.pch.h" />
+    <ClInclude Include="src\brain.h" />
+    <ClInclude Include="src\Brain\imgui\imgui.layer.h" />
+    <ClInclude Include="src\Brain\Platform\OpenGL\imgui_opengl_renderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Brain\application.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Brain\Events\event.cpp">
+      <Filter>Brain\Events</Filter>
     </ClCompile>
+    <ClCompile Include="src\Brain\Platform\Windows\windows_window.cpp">
+      <Filter>Brain\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Brain\application.cpp">
+      <Filter>Brain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Brain\layer.cpp">
+      <Filter>Brain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Brain\layer_stack.cpp">
+      <Filter>Brain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Brain\log.cpp">
+      <Filter>Brain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\br.pch.cpp" />
+    <ClCompile Include="src\Brain\imgui\imgui.layer.cpp" />
+    <ClCompile Include="src\Brain\Platform\OpenGL\imgui_opengl_renderer.cpp" />
   </ItemGroup>
 </Project>
