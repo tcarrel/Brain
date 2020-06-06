@@ -2,7 +2,7 @@
 
 
 
-#include "Brain/nucleus.h"
+#include "Brain/Core/nucleus.h"
 
 
 
@@ -29,13 +29,13 @@ namespace Brain
 		MOUSE_BUTTON = BIT(4)
 	};
 
-#define EVENT_CLASS_TYPE(type) static Event_Type get_static_type( void ) { return Event_Type::##type; }\
+#define EVENT_CLASS_TYPE(type) static Event_Type get_static_type( void ) { return Event_Type::type; }\
                                virtual Event_Type get_event_type( void ) const override { return get_static_type(); }\
                                virtual const char* get_name( void ) const override { return #type; }
 
 #define EVENT_CLASS_CATEGORY(category) virtual int get_category_flags( void ) const override { return category; }
 
-	class BRAIN_API Event
+	class Event
 	{
 		friend class Event_Dispatch;
 	public:
@@ -54,7 +54,7 @@ namespace Brain
 
 
 
-	class BRAIN_API Event_Dispatch
+	class Event_Dispatch
 	{
 		template<typename T>
 		using Event_Func = std::function<bool( T& )>;

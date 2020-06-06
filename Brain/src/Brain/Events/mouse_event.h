@@ -2,23 +2,24 @@
 
 
 
-#include "event.h"
+#include "Brain/Events/event.h"
+#include "Brain/Core/input.h"
 
 
 
 namespace Brain
 {
-    class BRAIN_API Mouse_Move_Event : public Event
+    class Mouse_Move_Event : public Event
     {
-        const double x_, y_;
+        const float x_, y_;
     public:
-        Mouse_Move_Event( const double& X, const double& Y )
+        Mouse_Move_Event( const float& X, const float& Y )
             :
             x_( X ), y_( Y )
         {}
 
-        const double& x{ x_ };
-        const double& y{ y_ };
+        const float& x{ x_ };
+        const float& y{ y_ };
 
         std::string to_string( void ) const override
         {
@@ -33,17 +34,17 @@ namespace Brain
 
 
 
-    class BRAIN_API Mouse_Scroll_Event : public Event
+    class Mouse_Scroll_Event : public Event
     {
-        const double x_offset_, y_offset_;
+        const float x_offset_, y_offset_;
     public:
-        Mouse_Scroll_Event( const double& x_off, const double& y_off )
+        Mouse_Scroll_Event( const float& x_off, const float& y_off )
             :
             x_offset_( x_off ), y_offset_( y_off )
         {}
 
-        const double& x_offset{ x_offset_ };
-        const double& y_offset{ y_offset_ };
+        const float& x_offset{ x_offset_ };
+        const float& y_offset{ y_offset_ };
 
         std::string to_string() const override
         {
@@ -58,27 +59,27 @@ namespace Brain
 
 
 
-    class BRAIN_API Mouse_Button_Event : public Event
+    class Mouse_Button_Event : public Event
     {
     public:
-        const int& button{ button_ };
+        const Mousecode& button{ button_ };
 
         EVENT_CLASS_CATEGORY( static_cast<int>( Event_Category::MOUSE ) | static_cast<int>( Event_Category::INPUT ) );
     protected:
-        Mouse_Button_Event( int btn )
+        Mouse_Button_Event( Mousecode btn )
             :
             button_( btn )
         {}
 
-        const int button_;
+        const Mousecode button_;
     };
 
 
 
-    class BRAIN_API Mouse_Button_Press_Event : public Mouse_Button_Event
+    class Mouse_Button_Press_Event : public Mouse_Button_Event
     {
     public:
-        Mouse_Button_Press_Event( int btn )
+        Mouse_Button_Press_Event( Mousecode btn )
             :
             Mouse_Button_Event( btn )
         {}
@@ -95,10 +96,10 @@ namespace Brain
 
 
 
-    class BRAIN_API Mouse_Button_Release_Event : public Mouse_Button_Event
+    class Mouse_Button_Release_Event : public Mouse_Button_Event
     {
     public:
-        Mouse_Button_Release_Event( int btn )
+        Mouse_Button_Release_Event( Mousecode btn )
             :
             Mouse_Button_Event( btn )
         {}

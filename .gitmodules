@@ -1,9 +1,16 @@
 [submodule "Brain/vendor/spdlog"]
 	path = Brain/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+	branch = v1.x
 [submodule "Brain/vendor/GLFW"]
 	path = Brain/vendor/GLFW
 	url = https://github.com/tcarrel/glfw
+	branch = master
 [submodule "Brain/vendor/imgui"]
 	path = Brain/vendor/imgui
 	url = https://github.com/tcarrel/imgui
+	branch = docking
+[submodule "Brain\\vendor\\glm"]
+	path = Brain\\vendor\\glm
+	url = https://github.com/g-truc/glm
+	branch = master

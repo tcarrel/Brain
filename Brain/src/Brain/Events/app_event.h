@@ -1,22 +1,11 @@
 #pragma once
+#include "Brain/Events/event.h"
 
 
 
 namespace Brain
 {
-
-}
-#pragma once
-
-
-
-#include "event.h"
-
-
-
-namespace Brain
-{
-    class BRAIN_API Window_Resize_Event : public Event
+    class Window_Resize_Event : public Event
     {
         unsigned width_;
         unsigned height_;
@@ -43,7 +32,7 @@ namespace Brain
 
 
 
-    class BRAIN_API Window_Close_Event : public Event
+    class Window_Close_Event : public Event
     {
     public:
         Window_Close_Event() = default;
@@ -54,7 +43,7 @@ namespace Brain
 
 
 
-    class BRAIN_API App_Tick_Event : public Event
+    class App_Tick_Event : public Event
     {
     public:
         App_Tick_Event() = default;
@@ -65,7 +54,7 @@ namespace Brain
 
 
 
-    class BRAIN_API App_Update_Event : public Event
+    class App_Update_Event : public Event
     {
     public:
         App_Update_Event() = default;
@@ -76,7 +65,7 @@ namespace Brain
 
 
 
-    class BRAIN_API App_Render_Event : public Event
+    class App_Render_Event : public Event
     {
     public:
         App_Render_Event() = default;

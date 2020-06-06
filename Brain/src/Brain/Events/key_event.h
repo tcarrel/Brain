@@ -2,34 +2,35 @@
 
 
 
-#include "event.h"
+#include "Brain/Events/event.h"
+#include "Brain/Core/input.h"
 
 
 
 namespace Brain
 {
-    class BRAIN_API Keyboard_Event : public Event
+    class Keyboard_Event : public Event
     {
     public:
-        const int& keycode{ keycode_ };
+        const Keycode& keycode{ keycode_ };
 
         EVENT_CLASS_CATEGORY( static_cast<int>( Event_Category::KEYBOARD ) | static_cast<int>( Event_Category::INPUT ) );
 
     protected:
-        Keyboard_Event( int keycode )
+        Keyboard_Event( Keycode keycode )
             :
             keycode_( keycode )
         {}
 
-        const int keycode_;
+        const Keycode keycode_;
     };
 
 
 
-    class BRAIN_API Key_Press_Event : public Keyboard_Event
+    class Key_Press_Event : public Keyboard_Event
     {
     public:
-        Key_Press_Event( int code, int repeat_count )
+        Key_Press_Event( Keycode code, int repeat_count )
             :
             Keyboard_Event( code ),
             repeat_count_( repeat_count )
@@ -52,10 +53,10 @@ namespace Brain
 
 
 
-    class BRAIN_API Key_Release_Event : public Keyboard_Event
+    class Key_Release_Event : public Keyboard_Event
     {
     public:
-        Key_Release_Event( int keycode )
+        Key_Release_Event( Keycode keycode )
             :
             Keyboard_Event( keycode )
         {}
@@ -72,10 +73,10 @@ namespace Brain
 
 
 
-    class BRAIN_API Typing_Event : public Keyboard_Event
+    class Typing_Event : public Keyboard_Event
     {
     public:
-        Typing_Event( int kc )
+        Typing_Event( Keycode kc )
             :
             Keyboard_Event( kc )
         {}
